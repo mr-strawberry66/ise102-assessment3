@@ -1,0 +1,14 @@
+[
+    {
+        "artist_name": "Jimi Hendrix",
+        "body_material": "Ash",
+        "brand": "Fender",
+        "colour": "Olympic White",
+        "fretboard_material": "Maple",
+        "id": 1,
+        "model": "Stratocaster",
+        "neck_material": "Maple",
+        "number_of_frets": 21,
+        "number_of_strings": 6
+    }
+]
