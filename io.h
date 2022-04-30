@@ -23,11 +23,9 @@ namespace io {
         // Create a JSON object and a filestream to the desired path.
         nlohmann::json guitars;
         std::ifstream file(file_path);
-
-        // Read the file contents and append to the JSON object.
+        
         file >> guitars;
 
-        // Close the file.
         file.close();
         return guitars;
     }
@@ -52,7 +50,6 @@ namespace io {
         std::ofstream file(file_path);
 
         for (const Guitar::Guitar &guitar : guitars) {
-            // Convert the Guitar to a JSON object.
             Guitar::toJson(guitar_json, guitar);
 
             // Append the guitar JSON to the container JSON.
@@ -62,6 +59,20 @@ namespace io {
         // Write the container JSON to the file.
         file << output_json.dump(4) << "\n";
         file.close();
+    }
+
+    /* Check to see if a file exists or not.
+     *
+     * Args:
+     *   file_path: const std::string&
+     *     The path to the file to check exists.
+     *
+     * Returns: bool
+     *   If the file exists or not.
+    */
+    bool fileExists(const std::string &file_path) {
+        std::ifstream infile(file_path);
+        return infile.good();
     }
 
     /* Populate a vector of Guitars from a JSON format file
@@ -85,7 +96,7 @@ namespace io {
         std::vector<Guitar::Guitar> guitars;
 
         // Check to see if the JSON file exists.
-        if (std::filesystem::exists(file_path)) {
+        if (fileExists(file_path)) {
 
             // If exists, try to read the file and populate the vector.
             try {
@@ -94,7 +105,6 @@ namespace io {
                 for (const auto &json_guitar : json_guitars) {
                     guitars.push_back(Guitar::fromJson(json_guitar));
                 }
-
             }
 
             // If a parse error occurs while reading the file,
