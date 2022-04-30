@@ -1,4 +1,4 @@
-all: main
+all: build
 
 CXX = clang++
 override CXXFLAGS += -g -Wno-everything

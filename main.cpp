@@ -1,3 +1,4 @@
+/* ISE102 Assessment 3 submission - Samuel Kenney */
 #include <iostream>
 #include <vector>
 
