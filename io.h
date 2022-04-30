@@ -102,7 +102,7 @@ namespace io {
             try {
                 nlohmann::json json_guitars = readGuitarsFromFile(file_path);
 
-                for (const auto &json_guitar : json_guitars) {
+                for (const nlohmann::json &json_guitar : json_guitars) {
                     guitars.push_back(Guitar::fromJson(json_guitar));
                 }
             }

@@ -24,20 +24,20 @@ Due to the way `nlohmann::json` works, if only one json object is present, it is
 This is where the `output_json` variable comes in to play in the `writeGuitarsToFile` fuction in `io.h`.
 
 ```cpp
-    void writeGuitarsToFile(const std::string file_path, const std::vector<Guitar::Guitar> &guitars) {
-        nlohmann::json guitar_json;
-        nlohmann::json output_json;
-        std::ofstream file(file_path);
+void writeGuitarsToFile(const std::string file_path, const std::vector<Guitar::Guitar> &guitars) {
+    nlohmann::json guitar_json;
+    nlohmann::json output_json;
+    std::ofstream file(file_path);
 
-        for (const Guitar::Guitar &guitar : guitars) {
-            Guitar::toJson(guitar_json, guitar);
+    for (const Guitar::Guitar &guitar : guitars) {
+        Guitar::toJson(guitar_json, guitar);
 
-            output_json.push_back(guitar_json);
-        };
+        output_json.push_back(guitar_json);
+    };
 
-        file << output_json.dump(4) << "\n";
-        file.close();
-    }
+    file << output_json.dump(4) << "\n";
+    file.close();
+}
 ```
 
 By appending the JSON formatted guitar to the `output_json` variable, it will always encase the guitars in an array, even if there is only one guitar.

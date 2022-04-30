@@ -282,6 +282,28 @@ namespace Guitar {
         return guitar;
     }
 
+    /* Generate a unique ID for a Guitar object.
+     *
+     * Check the highest current ID in the guitars
+     * vector and add 1 to it.
+     *
+     * Args:
+     *   guitars: std::vector<Guitar>&
+     *     A vector of Guitar objects.
+     *
+     * Returns: int
+     *   A unique ID for a Guitar object.
+    */
+    int generateId(const std::vector<Guitar> &guitars) {
+        int id = 0;
+        for (const Guitar &guitar : guitars) {
+            if (guitar.id > id) {
+                id = guitar.id;
+            }
+        }
+        return id + 1;
+    }
+
     /* Create a new Guitar object from user input.
      *
      * Args:
@@ -297,7 +319,7 @@ namespace Guitar {
         Guitar guitar;
 
         // Create a unique ID for the guitar.
-        guitar.id = guitars.size() + 1;
+        guitar.id = generateId(guitars);
 
         // Ask the user for each field of the Guitar object.
         std::cout << "Enter the brand: ";
