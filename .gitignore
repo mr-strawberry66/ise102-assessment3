@@ -2,3 +2,6 @@
 main
 *.out
 .vscode
+*.o
+*.d
+*.d.*

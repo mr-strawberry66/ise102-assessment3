@@ -23,7 +23,7 @@ namespace io {
         // Create a JSON object and a filestream to the desired path.
         nlohmann::json guitars;
         std::ifstream file(file_path);
-        
+
         file >> guitars;
 
         file.close();

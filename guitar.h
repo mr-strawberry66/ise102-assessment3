@@ -295,8 +295,11 @@ namespace Guitar {
     */
     Guitar fromUser(const std::vector<Guitar> &guitars) {
         Guitar guitar;
+
+        // Create a unique ID for the guitar.
         guitar.id = guitars.size() + 1;
 
+        // Ask the user for each field of the Guitar object.
         std::cout << "Enter the brand: ";
         std::getline(std::cin, guitar.brand);
 
